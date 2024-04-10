@@ -1,14 +1,21 @@
+:root {
+  --bar-width: 0%;
+}
+
+
 body {
   text-align: center;
   background-color: #283149;
+  user-select: none;
 }
 
 h1 {
+  user-select: none;
   font-size: 5rem;
   color: #DBEDF3;
   font-family: "Arvo", cursive;
   text-shadow: 3px 0 #DA0463;
-
+  margin-bottom: 5%;
 }
 
 footer {
@@ -45,7 +52,7 @@ footer {
 }
 
 .set {
-  margin: 10% auto;
+  margin: 5% auto;
 }
 
 .game-over {
@@ -63,6 +70,7 @@ footer {
 }
 
 .drum {
+  user-select: none;
   outline: none;
   border: 10px solid #404B69;
   font-size: 5rem;
@@ -78,4 +86,96 @@ footer {
   text-align: center;
   margin: 10px;
   background-color: white;
+}
+
+.btn{
+  padding: 0.5rem;
+  border-radius: 1rem;
+  font-weight: 600;
+  background-color: #DA0463;
+  color: white;
+  outline: none;
+  box-shadow: 0 0.1rem 0.5rem white;
+  width: max-content;
+  cursor: pointer;
+}
+
+.record{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.record span{
+  color: white;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  align-items: center;
+}
+
+.hide {
+  visibility: visible;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.show {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.musicBar{
+  width: 80%;
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.barbg{
+  padding: 0.3rem;
+  padding-left: 0;
+  background: #283149;
+  border-radius: 0.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.barStatus {
+  position: absolute;
+  background: blue;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+  width: var(--bar-width);
+  padding-left: 0%;
+}
+
+.barStatus::after {
+  position: absolute;
+  left: 100%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 50%;
+  content: "";
+  padding: 0.35rem;
+  align-items: center;
+  box-shadow: 0 0.2rem 0.5rem black;
+}
+
+.time{
+  color: black;
+  padding: 0%;
+  margin: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.disabled{
+  pointer-events: none;
 }
