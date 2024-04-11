@@ -90,7 +90,6 @@ function playRecorded(steps) {
   progressBar.style.setProperty("--bar-width", `${0}%`);
   progressBar.style.transition = "width 0.3s linear";
 
-  // Disable all buttons during playback
   document.querySelectorAll(".drum").forEach((button) => {
     button.classList.add("disabled");
   });
@@ -103,27 +102,21 @@ function playRecorded(steps) {
       buttonAnimation(element.key);
       index++;
 
-      // Calculate progress and update progress bar width
       const progress = (index / steps.length) * 100;
       progressBar.style.setProperty("--bar-width", `${progress}%`);
-      // Wait for the step duration before playing the next step
       setTimeout(playNextStep, element.secs);
     } else {
-      // Enable all buttons after all steps are played
       document.querySelectorAll(".drum").forEach((button) => {
         button.classList.remove("disabled");
       });
       document.querySelector(".btn").classList.remove("disabled");
-
-      // Don't reset progress bar width after all steps are played
       document.querySelector(".btn").textContent = "Record beats";
       progressBar.style.setProperty("--bar-width", `${0}%`);
       document.querySelector(".musicBar").classList.add("hidden");
     }
   }
 
-  // Start updating the progress bar more frequently
-  const updateInterval = 20; // Update interval in milliseconds
+  const updateInterval = 20;
 
   let elapsedTime = 0;
   const updateProgressBar = () => {
@@ -136,7 +129,6 @@ function playRecorded(steps) {
     }
   };
 
-  // Start playing the steps and updating the progress bar
   playNextStep();
   updateProgressBar();
 
@@ -150,14 +142,12 @@ function playRecorded(steps) {
       seconds
     )}`;
 
-    duration -= 1000; // Subtract one second (1000 milliseconds)
+    duration -= 1000;
 
     if (duration < 0) {
-      clearInterval(timerInterval); // Stop the timer when it reaches 0
+      clearInterval(timerInterval); 
     }
   }
-
-  // Start the timer
   timerInterval = setInterval(updateTime, 1000);
   updateTime();
 }
